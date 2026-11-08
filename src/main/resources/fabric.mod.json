@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "chataber",
+  "version": "${version}",
+  "name": "Chataber",
+  "description": "Organizes Minecraft chat into filterable tabs and expands @here to the current position.",
+  "authors": [
+    "Celeste"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "celeste.chataber.client.ChataberClient"
+    ],
+    "modmenu": [
+      "celeste.chataber.client.config.ChataberModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "chataber.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "modmenu": ">=20.0.1",
+    "cloth-config": ">=26.2.155",
+    "minecraft": "${minecraft_version}",
+    "java": ">=25"
+  }
+}
