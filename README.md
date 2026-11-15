@@ -12,6 +12,8 @@ Minecraftのチャットをタブで整理する、クライアント用Fabric M
 
 クライアントサイドmodです。
 
+対応するMinecraft Java Editionは **26.1／26.1.1／26.1.2、26.2、26.3**。
+
 ## 設定と操作
 
 Mod MenuからChataberの設定画面を開く。一般設定の「チャットタブ設定を開く」から、タブとDM相手を編集できる。
@@ -28,5 +30,7 @@ Mod MenuからChataberの設定画面を開く。一般設定の「チャット�
 ## ビルド
 
 ```sh
-./gradlew build
+./gradlew build (26.2)
+./gradlew build -PmcVersion=26.1.2
+./gradlew build -PmcVersion=26.3
 ```

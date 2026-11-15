@@ -1,5 +1,6 @@
 package celeste.chataber.client.config;
 
+import celeste.chataber.client.gui.ClientGuiAccess;
 import celeste.chataber.client.gui.ChataberConfigScreen;
 import celeste.chataber.config.ChatSettings;
 import celeste.chataber.config.ChataberSettingsDraft;
@@ -119,7 +120,7 @@ public final class ChataberClothConfigScreen {
 
         private void openManagement() {
             Screen clothScreen = getConfigScreen();
-            Minecraft.getInstance().gui.setScreen(new ChataberConfigScreen(
+            ClientGuiAccess.setScreen(Minecraft.getInstance(), new ChataberConfigScreen(
                     clothScreen,
                     context.tabs(),
                     context.directMessages(),

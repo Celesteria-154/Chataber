@@ -1,6 +1,7 @@
 package celeste.chataber.client;
 
 import celeste.chataber.client.gui.ChataberConfigScreen;
+import celeste.chataber.client.gui.ClientGuiAccess;
 import celeste.chataber.client.message.DirectMessageAvailability;
 import celeste.chataber.config.ChatSettings;
 import celeste.chataber.config.ConfigManager;
@@ -46,7 +47,6 @@ final class ChataberManagementKeyBinding {
     void register() {
         KeyMapping openManagement = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.chataber.open_management",
-                InputConstants.Type.KEYSYM,
                 InputConstants.UNKNOWN.getValue(),
                 CATEGORY
         ));
@@ -58,14 +58,14 @@ final class ChataberManagementKeyBinding {
     }
 
     private void openManagementScreen() {
-        Screen parent = client.gui.screen();
+        Screen parent = ClientGuiAccess.screen(client);
         if (parent != null && !(parent instanceof ChatScreen)) {
             return;
         }
         if (parent instanceof ChatScreen) {
-            client.gui.hud.getChat().preserveCurrentChatScreen();
+            ClientGuiAccess.chat(client).preserveCurrentChatScreen();
         }
-        client.gui.setScreen(new ChataberConfigScreen(
+        ClientGuiAccess.setScreen(client, new ChataberConfigScreen(
                 parent,
                 tabs,
                 directMessages,

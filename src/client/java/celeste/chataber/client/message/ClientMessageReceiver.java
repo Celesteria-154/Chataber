@@ -1,5 +1,6 @@
 package celeste.chataber.client.message;
 
+import celeste.chataber.client.gui.ClientGuiAccess;
 import celeste.chataber.config.ChatSettings;
 import celeste.chataber.message.DirectMessageManager;
 import celeste.chataber.message.DirectMessagePeer;
@@ -151,7 +152,7 @@ public final class ClientMessageReceiver {
         // HUD通知は受信DMだけ。表示中の会話とチャット画面を開いている間は通知しない
         if (direction == MessageRoute.Direction.INCOMING
                 && !views.isVisible(route)
-                && !(client.gui.screen() instanceof ChatScreen)) {
+                && !(ClientGuiAccess.screen(client) instanceof ChatScreen)) {
             notifications.notify(
                     "dm:" + peer.id(),
                     peer.shownName(),
@@ -163,7 +164,7 @@ public final class ClientMessageReceiver {
     }
 
     private void notifyHiddenCategory(MessageRoute.Category route) {
-        if (views.isVisible(route) || client.gui.screen() instanceof ChatScreen) {
+        if (views.isVisible(route) || ClientGuiAccess.screen(client) instanceof ChatScreen) {
             return;
         }
         // カテゴリが同じでも通知はタブ別に作成し、個別の表示期限を使う

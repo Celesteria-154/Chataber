@@ -1,5 +1,6 @@
 package celeste.chataber.client.message;
 
+import celeste.chataber.client.gui.ClientGuiAccess;
 import celeste.chataber.message.MessageClassifier;
 import celeste.chataber.message.MessageRoute;
 import celeste.chataber.tab.ChatViewManager;
@@ -22,12 +23,16 @@ public final class ChatVisibilityController {
     }
 
     public void apply() {
+        // クライアント初期化時点ではGUIがまだ生成されていない版がある。
+        if (client.gui == null) {
+            return;
+        }
         ClientMessageRouting.setDirectMessageView(
                 views.selectedView() instanceof SelectedChatView.DirectMessage direct
                         ? direct.peerId()
                         : null
         );
-        ChatComponent chat = client.gui.hud.getChat();
+        ChatComponent chat = ClientGuiAccess.chat(client);
         // 受信履歴は変更せず、選択ビューに合う行だけを再表示
         chat.setVisibleMessageFilter(this::isVisible);
         chat.resetChatScroll();

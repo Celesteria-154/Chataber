@@ -640,10 +640,10 @@ public final class ChataberConfigScreen extends Screen {
     private void returnToParent() {
         if (parent instanceof ChatScreen) {
             // 保存しておいたチャット画面を復元し、入力途中の内容を引き継ぐ
-            ChatScreen restored = minecraft.gui.hud.getChat().restoreChatScreen();
-            minecraft.gui.setScreen(restored == null ? parent : restored);
+            ChatScreen restored = ClientGuiAccess.chat(minecraft).restoreChatScreen();
+            ClientGuiAccess.setScreen(minecraft, restored == null ? parent : restored);
         } else {
-            minecraft.gui.setScreen(parent);
+            ClientGuiAccess.setScreen(minecraft, parent);
         }
     }
 

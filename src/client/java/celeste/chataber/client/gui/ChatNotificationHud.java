@@ -52,7 +52,7 @@ public final class ChatNotificationHud {
         // 設定画面から戻った際、すでに表示中の通知にもタブ別設定を反映
         notifications.applyLifetimePolicy(
                 state.hudNotificationSeconds(), state::persistentHudNotifications);
-        if (client.gui.screen() != null) {
+        if (ClientGuiAccess.screen(client) != null) {
             return;
         }
         List<TabNotificationManager.Notification> active = notifications.activeNotifications();
