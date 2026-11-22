@@ -3,6 +3,7 @@
   "id": "chataber",
   "version": "${version}",
   "name": "Chataber",
+  "icon": "assets/chataber/icon.png",
   "description": "Organizes Minecraft chat into filterable tabs and expands @here to the current position.",
   "authors": [
     "Celeste"

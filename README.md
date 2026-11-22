@@ -1,36 +1,51 @@
+<img src="docs/media/chataber-icon.png" alt="Chataber icon" width="96" height="96" align="right">
+
 # Chataber
 
-Minecraftのチャットをタブで整理する、クライアント用Fabric Mod。
+English · [日本語](README.ja.md)
 
-## 機能
+[![Release](https://img.shields.io/github/v/release/Celesteria-154/Chataber?logo=github)](https://github.com/Celesteria-154/Chataber/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue?logo=github)](LICENSE.txt)
+[![Downloads](https://img.shields.io/github/downloads/Celesteria-154/Chataber/total?logo=github)](https://github.com/Celesteria-154/Chataber/releases/latest)
+[![Minecraft: 26.1.x, 26.2, 26.3](https://img.shields.io/badge/Minecraft-26.1.x%20%7C%2026.2%20%7C%2026.3-609F35)](#supported-versions)
 
-- チャット、システムメッセージ、コマンドフィードバックの分類とタブ切り替え
-- タブの追加、名前変更、並べ替え、表示カテゴリの設定
-- DM相手ごとの会話表示、表示名、ピン留め、表示順の設定
-- 未読バッジと左下のHUD通知。常時表示はタブ・DM相手ごとに設定可能
-- `@here`を現在のブロック座標へ展開。出力形式を変更可能
+Chataber is a client-side Fabric mod that organizes Minecraft chat into tabs.
 
-クライアントサイドmodです。
+## Previews
 
-対応するMinecraft Java Editionは **26.1／26.1.1／26.1.2、26.2、26.3**。
+**Filtering messages and switching tabs**
 
-## 設定と操作
+![Switching between All, Chat, Sys, and Command filters the messages on screen](docs/media/chat-tabs-preview.gif)
 
-Mod MenuからChataberの設定画面を開く。一般設定の「チャットタブ設定を開く」から、タブとDM相手を編集できる。
+**Sharing coordinates with `@here`**
 
-- `All`はすべての分類を表示する。各タブの「高度な設定」で表示対象を選択する。
-- 「通知を常時表示する」は、編集中のタブまたはDM相手だけに適用される。`All`はHUD通知先ではないため設定対象外。
-- 常時表示を無効にした対象には、一般設定のHUD表示時間を使用する。`0`で時間制限付き通知を無効にする。
-- DM画面で通常の本文を入力すると、既定では`/tell {player}`形式で送信する。自動送信の無効化とコマンド形式の変更に対応する。
-- プレイヤー名入力欄ではTab / Shift+Tabで候補を切り替え、Enterで確定する。
-- 「Chataberタブ設定を開く」のキーは未割り当て。必要に応じてMinecraftの操作設定で割り当てる。
+![The input highlights @here in cyan and replaces it with coordinates when the message is sent](docs/media/here-preview.gif)
 
-`@here`の既定出力は`X:{x} Y:{y} Z:{z}`。`{x}`、`{y}`、`{z}`を含む1行の形式へ変更できる。
+## Features
 
-## ビルド
+- Separate player chat, system messages, and command feedback into tabs.
+- Add, rename, reorder, and configure the message categories for each tab.
+- View direct-message conversations by player, set display names, pin contacts, and set their order.
+- See unread badges and HUD notifications in the lower-left corner. Keep notifications visible per tab or DM contact.
+- Use `@here` to share your current block coordinates in a configurable format.
+
+## Settings and controls
+
+Open Chataber in Mod Menu, then select **Open Chat Tab Settings** to manage tabs and DM contacts.
+
+- `All` shows every message category. Select the categories for other tabs under **Advanced settings**.
+- **Keep notifications visible** applies to the tab or DM contact you are editing. HUD notifications target individual tabs and contacts, so `All` has no setting.
+- Timed notifications use the HUD duration in general settings. Set it to `0` to turn off timed notifications.
+- Plain text in a DM view is sent using `/tell {player}` by default. You can turn off automatic DM sending or change the command format.
+- Press Tab or Shift+Tab to cycle through player name suggestions, then press Enter to confirm.
+- Assign the optional **Open Chataber tab settings** shortcut in Minecraft's controls menu.
+
+The default `@here` format is `X:{x} Y:{y} Z:{z}`. You can use any single-line format containing `{x}`, `{y}`, and `{z}`.
+
+## Build
 
 ```sh
-./gradlew build (26.2)
+./gradlew build # Defaults to Minecraft 26.2
 ./gradlew build -PmcVersion=26.1.2
 ./gradlew build -PmcVersion=26.3
 ./gradlew build -allVer
