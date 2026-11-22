@@ -50,7 +50,8 @@ class BuildAllVersions {
         try {
             try (var zip = new ZipOutputStream(Files.newOutputStream(temporary))) {
                 for (Path jar : jars) {
-                    zip.putNextEntry(new ZipEntry(jar.getFileName().toString()));
+                    String entryName = jar.getFileName().toString().replaceFirst("\\+mc26\\.1\\.2\\.jar$", "+mc26.1.x.jar");
+                    zip.putNextEntry(new ZipEntry(entryName));
                     Files.copy(jar, zip);
                     zip.closeEntry();
                 }
