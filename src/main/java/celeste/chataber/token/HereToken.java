@@ -25,6 +25,10 @@ public final class HereToken implements ChatToken {
                 .orElse(message);
     }
 
+    public static Matcher matcher(String message) {
+        return TOKEN.matcher(message);
+    }
+
     private static String replaceAtPosition(String message, BlockPos position, String format) {
         // 不正な書式は既定形式に置換
         String safeFormat = ChatSettings.isValidHereFormat(format)
@@ -35,6 +39,6 @@ public final class HereToken implements ChatToken {
                 .replace("{y}", Integer.toString(position.getY()))
                 .replace("{z}", Integer.toString(position.getZ()));
         // 書式に含まれる$やバックスラッシュを正規表現の置換命令として扱わない
-        return TOKEN.matcher(message).replaceAll(Matcher.quoteReplacement(replacement));
+        return matcher(message).replaceAll(Matcher.quoteReplacement(replacement));
     }
 }

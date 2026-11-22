@@ -33,4 +33,5 @@ Mod MenuからChataberの設定画面を開く。一般設定の「チャット�
 ./gradlew build (26.2)
 ./gradlew build -PmcVersion=26.1.2
 ./gradlew build -PmcVersion=26.3
+./gradlew build -allVer
 ```

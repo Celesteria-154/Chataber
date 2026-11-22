@@ -68,14 +68,16 @@ echo location of your Java installation. 1>&2
 "%COMSPEC%" /c exit 1
 
 :execute
-@rem Setup the command line
-
-
+if "%~1"=="build" if "%~2"=="-allVer" goto buildAllVersions
 
 @rem Execute gradlew
 @rem endlocal doesn't take effect until after the line is parsed and variables are expanded
 @rem which allows us to clear the local environment before executing the java command
 endlocal & "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -jar "%APP_HOME%\gradle\wrapper\gradle-wrapper.jar" %* & call :exitWithErrorLevel
+goto :eof
+
+:buildAllVersions
+endlocal & "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "%APP_HOME%\gradle\BuildAllVersions.java" "%APP_HOME%\." %* & call :exitWithErrorLevel
 
 :exitWithErrorLevel
 @rem Use "%COMSPEC%" /c exit to allow operators to work properly in scripts
