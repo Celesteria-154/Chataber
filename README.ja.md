@@ -1,7 +1,5 @@
-<img src="docs/media/chataber-icon.png" alt="Chataberのアイコン" width="96" height="96" align="right">
-
 # Chataber
-
+<img src="docs/media/chataber-icon.png" alt="Chataberのアイコン" width="96" height="96" align="right">
 [English](README.md) · 日本語
 
 [![Release](https://img.shields.io/github/v/release/Celesteria-154/Chataber?logo=github)](https://github.com/Celesteria-154/Chataber/releases)
