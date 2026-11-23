@@ -1,6 +1,5 @@
-<img src="docs/media/chataber-icon.png" alt="Chataber icon" width="96" height="96" align="right">
-
 # Chataber
+<img src="docs/media/chataber-icon.png" alt="Chataber icon" width="96" height="96" align="right">
 
 English · [日本語](README.ja.md)
 
